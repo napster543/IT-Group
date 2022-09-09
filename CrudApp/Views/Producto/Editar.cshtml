@@ -1,0 +1,36 @@
+﻿
+@model CrudApp.Models.ViewModel.EditProductoViewModel
+@{
+    ViewBag.Title = "Editar Materia";
+}
+
+<h2>Editar</h2>
+
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Editar", "Producto", FormMethod.Post, new { role = "form", @class = "" }))
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationMessage("error", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.Nombre)
+            @Html.TextBoxFor(d => d.Nombre, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(d => d.Valor)
+            @Html.TextBoxFor(d => d.Valor, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(d => d.Unitario)
+            @Html.TextBoxFor(d => d.Unitario, new { @class = "form-control" })
+            <br />
+
+
+
+
+
+            <div style="text-align:right;">
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        }
+    </div>
+</div>

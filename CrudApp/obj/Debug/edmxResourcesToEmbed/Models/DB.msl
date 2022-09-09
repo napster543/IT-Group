@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IT_GroupModelStoreContainer" CdmEntityContainer="DBEntities">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="IT_GroupModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="numero_identificacion" ColumnName="numero_identificacion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="tipo_identificacion" ColumnName="tipo_identificacion" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="concat_identificacion_tipo" ColumnName="concat_identificacion_tipo" />
+          <ScalarProperty Name="concat_nombre_apellido" ColumnName="concat_nombre_apellido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="IT_GroupModel.Productos">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="unitario" ColumnName="unitario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="IT_GroupModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="IT_GroupModel.Ventas">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

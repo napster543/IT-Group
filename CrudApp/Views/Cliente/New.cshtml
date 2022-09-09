@@ -1,0 +1,93 @@
+﻿
+@model CrudApp.Models.ViewModel.ClienteViewModel
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+
+<div class="container">
+    <div class="form-horizontal">
+
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(d => d.nombres)
+                @Html.TextBoxFor(d => d.nombres, new { id = "nombres", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(d => d.apellidos)
+                @Html.TextBoxFor(d => d.apellidos, new { id = "apellidos", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(d => d.numero_identificacion)
+                @Html.TextBoxFor(d => d.numero_identificacion, new { id = "numero_identificacion", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(d => d.email)
+                @Html.TextBoxFor(d => d.email, new { id = "email", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(d => d.telefono)
+                @Html.TextBoxFor(d => d.telefono, new { id = "telefono", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(d => d.tipo_identificacion)
+                @Html.TextBoxFor(d => d.tipo_identificacion, new { id = "tipo_identificacion", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <input type="button" name="name" class="btn btn-primary" value="Enviar" onclick="AddCliente()" />
+
+            </div>
+        </div>
+        </form>
+
+    </div>
+
+    <script>
+
+    var url = "@Url.Content("~/Cliente/Save")";
+
+    function AddCliente() {
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify({
+                nombres: document.getElementById("nombres").value,
+                apellidos: document.getElementById("apellidos").value,
+                numero_identificacion: document.getElementById("numero_identificacion").value,
+                email: document.getElementById("email").value,
+                telefono: document.getElementById("telefono").value,
+                tipo_identificacion: document.getElementById("tipo_identificacion").value
+
+            }),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            }
+        }).then(function (response) {
+            if (response.ok)
+                return response.text()
+            else
+                alert("error al ejecutar");
+        }).then(function (data) {
+            if (data != 1) {
+                alert(data);
+            } else {
+                document.location.href = "@Url.Content("~/Cliente/")"
+            }
+        })
+    }
+
+    </script>
+

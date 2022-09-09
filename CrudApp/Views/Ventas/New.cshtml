@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "New";
+    List<SelectListItem> ItemsCl = (List<SelectListItem>)ViewBag.itemsCliente;
+    List<SelectListItem> ItemsPt = (List<SelectListItem>)ViewBag.itemsProducto;
+}
+
+<h2>NewVenta</h2>
+
+@using (Html.BeginForm("Guardar", "Ventas", FormMethod.Post, new { role = "form", @class = "" }))
+{
+    @Html.AntiForgeryToken();
+    <div class="row">
+        <div class="col-lg-2">
+            <label>Selecciona un cliente</label>
+        </div>
+        <div class="col-lg-10">
+            @Html.DropDownList("id_cliente", ItemsCl, "Seleccionar cliente", new { @class = "form-control" })
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <label>Selecciona un Producto</label>
+        </div>
+        <div class="col-lg-10">
+            @Html.DropDownList("id_producto", ItemsPt, "Seleccionar Producto", new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-lg-2">
+                <label>Cantidad</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" name="cantidad" id="cantidad" value="" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <label>Valor Total</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" name="ValorTotal" id="ValorTotal" value="" />
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-lg-10">
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+    </div>
+
+}

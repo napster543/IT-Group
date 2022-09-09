@@ -1,0 +1,49 @@
+﻿@using CrudApp.Models.ViewModel
+@model List<VentasRelacionViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<button 
+        class="btn btn-primary" 
+        onclick="document.location.href='@Url.Content("~/Ventas/New")'">Realizar Ventas</button>
+
+<table style="width:100%;" class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Valor</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var oVentas in Model)
+        {
+            <tr>
+                <td>@oVentas.id</td>
+                <td>@oVentas.cliente</td>
+                <td>@oVentas.producto</td>
+                <td>@oVentas.cantidad</td>
+                <td>@oVentas.ValorTotal</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function jsDelete(id) {
+        var confirmacion = confirm("Desea eliminar este registro?");
+        if (confirmacion) {
+            document.location.href = '@Url.Content("~/MateriaPersona/Delete/")' + id
+        }
+    }
+
+</script>

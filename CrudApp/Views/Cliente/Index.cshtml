@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Cliente";
+    Layout = null;
+}
+
+<h2>@ViewBag.Title</h2>
+<button onclick="document.location.href='@Url.Content("~/Cliente/New")'" class="btn btn-primary">Crear un nuevo alumno</button>
+<button onclick="ObtenerData()" class="btn btn-primary">Actualizar data</button>
+<br />
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Listado de informacion de informacion </div>
+    <div class="panel-body"><div id="divListadoPersona"></div></div>
+    <div class="panel-footer">Panel Footer</div>
+</div>
+
+
+<script>
+    Ruta = "@Url.Content("~/Cliente/List")";
+    ObtenerData();
+    document.getElementById("divListadoPersona").innerHTML = "Loading....."
+    function ObtenerData() {
+        fetch(Ruta)
+            .then(function (response) {
+                return response.text();
+            })
+            .then((data) => {
+                document.getElementById("divListadoPersona").innerHTML = data;
+            })
+    }
+
+
+
+
+    function jsDelete(id) {
+        mensaje = "El registro #" + id + " será eliminado";
+        var confirmar = confirm(mensaje);
+        var ruta = "@Url.Content("~/Cliente/Delete/")" + id;
+        if (confirmar) {
+            fetch(ruta, {
+                method: "POST",
+            })
+                .then(function (response) {
+                    return response.text();
+                }).
+                then((data) => {
+                    alert(data);
+                    ObtenerData();
+                })
+        } else {
+            alert("Se cancelo la eliminación");
+        }
+    }
+
+
+
+</script>

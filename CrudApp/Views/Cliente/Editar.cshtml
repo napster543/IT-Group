@@ -1,0 +1,46 @@
+﻿@model CrudApp.Models.ViewModel.EditClientViewModel
+@{
+    ViewBag.Title = "Editar un cliente";
+}
+
+<h2>Editar</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Editar", "Cliente", FormMethod.Post, new { role = "form", @class = "" }))
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationMessage("error", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.nombres)
+            @Html.TextBoxFor(d => d.nombres, new { @class = "form-control" })
+            <br />
+
+            @Html.LabelFor(d => d.apellidos)
+            @Html.TextBoxFor(d => d.apellidos, new { id = "apellidos", @class = "form-control" })
+            <br />
+
+            @Html.LabelFor(d => d.numero_identificacion)
+            @Html.TextBoxFor(d => d.numero_identificacion, new { id = "NumIdentificacion", @class = "form-control" })
+            <br />
+            @Html.LabelFor(d => d.email)
+            @Html.TextBoxFor(d => d.email, new { id = "correo", @class = "form-control" })
+            <br />
+
+            @Html.LabelFor(d => d.telefono)
+            @Html.TextBoxFor(d => d.telefono, new { id = "telefono", @class = "form-control" })
+            <br />
+
+            @Html.LabelFor(d => d.tipo_identificacion)
+            @Html.TextBoxFor(d => d.tipo_identificacion, new { id = "tipo_identificacion", @class = "form-control" })
+            <br />
+
+
+
+
+            <div style="text-align:right;">
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        }
+    </div>
+</div>

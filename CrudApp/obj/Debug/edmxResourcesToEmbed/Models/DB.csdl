@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IT_GroupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numero_identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+    <Property Name="concat_identificacion_tipo" Type="String" MaxLength="73" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="concat_nombre_apellido" Type="String" MaxLength="103" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valor" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="unitario" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_producto" Type="Int32" />
+    <Property Name="id_cliente" Type="Int32" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="ValorTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+  </EntityContainer>
+</Schema>

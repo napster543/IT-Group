@@ -1,0 +1,44 @@
+﻿
+@using CrudApp.Models.ViewModel;
+@model List<ListClientViewModel>
+@{
+    ViewBag.Title = "List";
+}
+
+
+
+
+
+<table style="width:100%;" class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Identificacion</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var oPerson in Model)
+        {
+
+            <tr>
+                <td>@oPerson.numero_identificacion </td>
+                <td>@oPerson.tipo_identificacion </td>
+                <td>@oPerson.nombre </td>
+                <td>@oPerson.apellido </td>
+                <td>@oPerson.email </td>
+                <td>@oPerson.fecha_creacion </td>
+                <td>
+                    <button type="button" onclick="jsDelete(@oPerson.Id)" class="btn btn-danger">Eliminar</button>
+                    <button type="button" onclick="document.location.href='@Url.Content("~/Cliente/Editar/"+ oPerson.Id)'" class="btn btn-default">Actualizar</button>
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
